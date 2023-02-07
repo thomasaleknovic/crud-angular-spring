@@ -9,7 +9,7 @@ import { delay, first, tap } from 'rxjs/operators';
 })
 export class CoursesService {
 
-  private readonly API = 'api/courses';
+  private readonly API = 'https://crud-angular-spring-production.up.railway.app/api/courses';
 
   constructor(private httpClient: HttpClient) { }
 
