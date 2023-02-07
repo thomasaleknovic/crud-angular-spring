@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.thomasaleknovic.crudspring.model.Course;
 
+@CrossOrigin(origins = "https://crud-angular-spring-steel.vercel.app")
 @Validated
 @RestController
 @RequestMapping("/api/courses")
