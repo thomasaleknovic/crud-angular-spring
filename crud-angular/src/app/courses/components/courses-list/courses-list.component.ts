@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Course } from '../../model/course';
 
@@ -7,28 +7,29 @@ import { Course } from '../../model/course';
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss']
 })
-export class CoursesListComponent {
+export class CoursesListComponent implements OnInit {
+
   @Input() courses: Course[] = [];
-  @Output() details: EventEmitter<Course> = new EventEmitter(false);
-  @Output() edit: EventEmitter<Course> = new EventEmitter(false);
-  @Output() remove: EventEmitter<Course> = new EventEmitter(false);
-  @Output() add: EventEmitter<boolean> = new EventEmitter(false);
+  @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['name', 'category', 'actions'];
 
-  onDetails(record: Course) {
-    this.details.emit(record);
-  }
+  constructor() { }
+
+  ngOnInit(): void { }
 
   onAdd() {
     this.add.emit(true);
   }
 
-  onEdit(record: Course) {
-    this.edit.emit(record);
+  onEdit(course: Course) {
+    this.edit.emit(course);
   }
 
-  onRemove(record: Course) {
-    this.remove.emit(record);
+  onDelete(course: Course) {
+    this.remove.emit(course);
   }
+
 }
